@@ -1,6 +1,6 @@
 <x-site-layout>
     <x-slot name="header">
-        <div class="sm:flex sm:items-center">
+        <div x-data class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
                 <h1 class="text-base font-semibold text-gray-900">Contact details</h1>
             </div>
@@ -12,10 +12,10 @@
                     </a>
                 @endcan
                 @can('delete',$contact)
-                    <a href="{{ route('contact.create') }}"
+                <button x-on:click="$deleteModal(@js(route('contact.destroy',$contact)))"
                        class="block rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
                         Delete
-                    </a>
+                </button>
                 @endcan
             </div>
         </div>
